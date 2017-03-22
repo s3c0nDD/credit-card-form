@@ -5,7 +5,7 @@
     <meta charset="utf-8">
 
     <title>Credit card </title>
-    <meta name="description" content="The HTML5 Herald">
+    <meta name="description" content="Credit card form">
     <meta name="author" content="s3c0nDD">
 
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -17,18 +17,65 @@
 </head>
 
 <body>
-    <div class="container-fluid">
+<div class="container-fluid">
 
     <!-- form start here -->
-    <div class="content">
+    <div class="content row">
 
-        <h1>Hello world</h1>
-        <h2>siema</h2>
+        <form>
 
-    </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="cardNumber">Credit Card Number:</label>
+                    <input type=text
+                           class="form-control"
+                           id="cardNumber"
+                           placeholder="Enter your card number">
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="expirationDate">Expiration date</label>
+                    <input type="date"
+                           class="form-control"
+                           id="expirationDate">
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="checkbox">
+                    <label>
+                        <input id="storeTheCard"
+                               type="checkbox"> Do you want to store a card?
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="userEmail">Email:</label>
+                    <input type="email"
+                           class="form-control"
+                           id="userEmail"
+                           placeholder="Enter your email">
+                </div>
+            </div>
+
+            <div class="col-md-12 col-submit-btn">
+
+                <button type="button"
+                        id="submitBtn"
+                        class="btn btn-block btn-primary">
+                    Submit
+                </button>
+            </div>
+
+        </form>
     <!-- form end here -->
+    </div> <!-- /.content.row -->
 
-    </div>
+</div> <!-- /.container-fluid -->
 
     <!-- scripts -->
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
