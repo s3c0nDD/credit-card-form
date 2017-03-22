@@ -33,12 +33,6 @@ $(document).ready(() => {
         }
     });
 
-    /* handle validation */
-    config.$button.on('click', () => {
-        console.log('submit click');
-        validation();
-    });
-
     /* handle card Number */
     //$('.field').val().replace(/\s+/g, '').length
     // ^-- len without space
@@ -71,14 +65,29 @@ $(document).ready(() => {
         }
     });
 
+    /* handle validation */
+    config.$button.on('click', () => {
+        console.log('submit click');
+        let valid = validation();
+        if (valid) {
+            console.log('PRAWIDLOWO');
+        }
+    });
+
     let validation = () => {
         console.group('validation');
-        validationCardNumber(inputs.$cardNr);
-        validationExpDate(inputs.$expDate);
-        validationCVV(inputs.$cvvNumber);
-        if (config.$checkbox.is(':checked'))
-            validationEmail(inputs.$email);
+        let test1 = validationCardNumber(inputs.$cardNr);
+        let test2 = validationExpDate(inputs.$expDate);
+        let test3 = validationCVV(inputs.$cvvNumber);
+        let valid = !!test1 && !!test2 && !!test3;
+        if (config.$checkbox.is(':checked')) {
+            let test4 = validationEmail(inputs.$email);
+            valid = valid && !!test4;
+            console.log('ALL valid in email', valid);
+        }
         console.groupEnd();
+
+        return valid;
     };
 
     let validationCardNumber = ($el) => {
@@ -99,8 +108,22 @@ $(document).ready(() => {
         return valid;
     };
 
-    let validationExpDate = () => {
-        inputs.$expDate.parent().addClass('has-error');
+    let validationExpDate = ($el) => {
+        let date = new Date($el.val()),
+            today = new Date(),
+            valid = false;
+        if (date > today) {
+            $el.parent()
+                .addClass('has-success')
+                .removeClass('has-error');
+            valid = true;
+        } else {
+            $el.parent()
+                .removeClass('has-success')
+                .addClass('has-error');
+        }
+        console.log('Date:', $el.val(), 'is valid:', valid);
+        return valid;
     };
 
     let validationCVV = ($el) => {
@@ -117,14 +140,29 @@ $(document).ready(() => {
             $el.parent()
                 .removeClass('has-success')
                 .addClass('has-error');
-
         }
         console.log("CVV:", $el.val(), 'is valid:', valid);
         return valid;
     };
 
     let validationEmail = ($el) => {
-        $el.parent().addClass('has-error');
+        let val = $el.val(),
+            valid = false,
+            check = /.+@.+\..+/i;
+
+        if (check.test(val)) {
+            $el.parent()
+                .addClass('has-success')
+                .removeClass('has-error');
+            valid = true;
+        } else {
+            $el.parent()
+                .removeClass('has-success')
+                .addClass('has-error');
+        }
+
+        console.log("Email:", $el.val(), 'is valid:', valid);
+        return valid;
     };
 
     // from: https://gist.github.com/DiegoSalazar/4075533
@@ -152,7 +190,8 @@ $(document).ready(() => {
     };
 
     let testLuhn = () => {
-        //array from: https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/credit_card_numbers.htm
+        //array from:
+        // https://www.paypalobjects.com/en_US/vhelp/paypalmanager_help/credit_card_numbers.htm
         const testArr = [
             '378282246310005',
             '371449635398431',
@@ -177,7 +216,6 @@ $(document).ready(() => {
             console.log(idx, ':', val, luhnTest(val));
         });
     };
-
-    testLuhn();
+    // testLuhn();
 
 });

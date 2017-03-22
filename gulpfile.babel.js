@@ -2,6 +2,7 @@
 
 import gulp from 'gulp';
 import babel from 'gulp-babel';
+import jshint from 'gulp-jshint';
 import uglify from 'gulp-uglify';
 import sass from 'gulp-sass';
 import autoprefixer from 'gulp-autoprefixer';
@@ -28,6 +29,7 @@ gulp.task('javascript', () => {
        .pipe(babel({
            presets: ['es2015']
        }))
+       .pipe(jshint()) //TODO: configuration?
        .pipe(uglify())
        .pipe(sourcemaps.write('.'))
        .pipe(gulp.dest(jsPaths.dest));
