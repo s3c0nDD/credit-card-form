@@ -67,10 +67,14 @@ $(document).ready(() => {
 
     /* handle validation */
     config.$button.on('click', () => {
-        console.log('submit click');
+        $('.content--success').hide();
         let valid = validation();
         if (valid) {
-            console.log('PRAWIDLOWO');
+            $('.loader').show();
+            setTimeout(()=> {
+                $('.loader').hide();
+                $('.content--success').show();
+            }, 2000);
         }
     });
 

@@ -45,7 +45,7 @@ gulp.task('styles', () => {
         .pipe(gulp.dest(sassPaths.dest))
 });
 
-gulp.task('browser-sync', () => {
+gulp.task('browser-sync', ['javascript', 'styles'], () => {
     return browserSync.init([`index.html`,`${dirs.src}/*.scss`, `${dirs.src}/*.js`, `${dirs.src}/*.css`], {
         server: {
             baseDir: "./"
