@@ -1,0 +1,16 @@
+$position-top: 40%;
+
+body {
+
+  .content {
+    position: fixed;
+    top: $position-top;
+    left: 50%;
+    transform: translate(-$position-top, -50%);
+    padding: 80px;
+    border-radius: 20px;
+    background-color: antiquewhite;
+  }
+
+}
+
