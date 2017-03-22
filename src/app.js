@@ -79,7 +79,7 @@ $(document).ready(() => {
     });
 
     let validation = () => {
-        console.group('validation');
+        // console.group('validation');
         let test1 = validationCardNumber(inputs.$cardNr);
         let test2 = validationExpDate(inputs.$expDate);
         let test3 = validationCVV(inputs.$cvvNumber);
@@ -87,9 +87,9 @@ $(document).ready(() => {
         if (config.$checkbox.is(':checked')) {
             let test4 = validationEmail(inputs.$email);
             valid = valid && !!test4;
-            console.log('ALL valid in email', valid);
+            // console.log('ALL valid in email', valid);
         }
-        console.groupEnd();
+        // console.groupEnd();
 
         return valid;
     };
@@ -108,7 +108,7 @@ $(document).ready(() => {
                 .removeClass('has-success')
                 .addClass('has-error');
         }
-        console.log('Card Number:', $el.val(), 'is valid:', valid);
+        // console.log('Card Number:', $el.val(), 'is valid:', valid);
         return valid;
     };
 
@@ -126,7 +126,7 @@ $(document).ready(() => {
                 .removeClass('has-success')
                 .addClass('has-error');
         }
-        console.log('Date:', $el.val(), 'is valid:', valid);
+        // console.log('Date:', $el.val(), 'is valid:', valid);
         return valid;
     };
 
@@ -145,7 +145,7 @@ $(document).ready(() => {
                 .removeClass('has-success')
                 .addClass('has-error');
         }
-        console.log("CVV:", $el.val(), 'is valid:', valid);
+        // console.log("CVV:", $el.val(), 'is valid:', valid);
         return valid;
     };
 
@@ -165,7 +165,7 @@ $(document).ready(() => {
                 .addClass('has-error');
         }
 
-        console.log("Email:", $el.val(), 'is valid:', valid);
+        // console.log("Email:", $el.val(), 'is valid:', valid);
         return valid;
     };
 
