@@ -21,5 +21,5 @@ gulp
 
 [MIT](https://opensource.org/licenses/MIT)
 
-Copyright © 2017 Witold Janik aka [s3c0ndd](github.com/s3c0nDD)
+Copyright © 2017 [s3c0ndd](https://github.com/s3c0nDD)
 
